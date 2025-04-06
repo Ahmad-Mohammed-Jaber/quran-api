@@ -18,7 +18,7 @@ function playSequentially(index = 0) {
 
 async function main() 
 {
-    const res = await fetch('https://api.alquran.cloud/v1/surah/31/editions/ar.minshawi,quran-unicode,en.sahih')
+    const res = await fetch('https://api.alquran.cloud/v1/surah/14/editions/ar.minshawi,quran-unicode,en.sahih?offset=39&limit=2')
     const result = await res.json();
     const data = result.data
 
@@ -51,8 +51,7 @@ async function main()
     console.log(audios)
     audios.forEach(audio => 
     {
-        console.log(audio.duration)
-        sleep(1000).then(() => totalTime += audio.duration) 
+        totalTime += audio.duration 
     });
     
     const playAyatButton = document.getElementById('playAyatButton')
@@ -67,19 +66,24 @@ async function main()
         console.log(totalTime * 1000)
         sleep(totalTime * 1000).then(() => playAyatButton.removeAttribute('disabled'))
         let prevTime = 0
-        playSequentially(0)
+        playSequentially()
     }
 
 
     let br = document.createElement('br')
     document.body.appendChild(br)
 
-    textSrc.forEach(text => 
+    textSrc.forEach((text, index) => 
     {
         text.forEach(ayah => 
         {
             let ayahText = document.createElement('p')
-            ayahText.innerText = ayah.text
+            console.log(ayah)
+            ayahText.innerText = `${ayah.text} (${ayah.numberInSurah})`
+            if (index === 0)
+            {
+                ayahText.classList.add('arabic-text')
+            }
             document.body.append(ayahText)
             br = document.createElement('br')
             document.body.append(br)

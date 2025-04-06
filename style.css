@@ -1,3 +1,17 @@
 p {
+    font-size: 2.5rem;
     font-family: "Amiri Quran";
+}
+
+.arabic-text {
+    text-align: right;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    font-size: 2rem;
 }
