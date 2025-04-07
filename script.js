@@ -18,7 +18,7 @@ function playSequentially(index = 0) {
 
 async function main() 
 {
-    const res = await fetch('https://api.alquran.cloud/v1/surah/14/editions/ar.minshawi,quran-unicode,en.sahih?offset=39&limit=2')
+    const res = await fetch('https://api.alquran.cloud/v1/surah/16/editions/ar.minshawi,quran-unicode,en.sahih?offset=67&limit=2')
     const result = await res.json();
     const data = result.data
 
