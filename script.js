@@ -33,6 +33,8 @@ async function main() {
         audios[index].onended = () => playSequentially(index + 1)
     }
 
+    
+    // Text Generation
     data.slice(1).forEach(obj => {
         let ayat = []
         obj.ayahs.forEach(ayah => {
@@ -41,7 +43,6 @@ async function main() {
         textSrc.push(ayat)
     });
 
-    // Text Generation
 
     let br = document.createElement('br')
     document.body.appendChild(br)
